@@ -1,0 +1,2 @@
+To compile this, use
+cmake . && make -j8 && make install
