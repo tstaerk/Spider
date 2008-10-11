@@ -1,2 +1,4 @@
+Spider is a software to allow you to follow links in html pages.
+
 To compile this, use
 cmake . && make -j8 && make install
