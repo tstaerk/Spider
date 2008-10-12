@@ -22,6 +22,7 @@ build and run it like this:
 #include <buffio.h>
 #include <stdio.h>
 #include <errno.h>
+#include <iostream>
 
 void parsefile(QString file, int depth)
 {
@@ -141,6 +142,15 @@ QString tidyfile()
 
 int main(int argc, char *argv[])
 {
-  tidyfile(); 
-  parsefile(argv[1],0);
+  if ( argc<2 ) 
+  { 
+    std::cout << "You did not call spider with the correct syntax.\n";
+    std::cout << "Syntax: spider <html file>" << std::endl;
+    std::cout << "Example: spider index.htm" << std::endl;
+  }
+  else
+  {
+    tidyfile(); 
+    parsefile(argv[1],0);
+  }
 }
