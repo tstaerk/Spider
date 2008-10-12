@@ -48,7 +48,7 @@ void parsefile(QString file, int depth)
   char s[80]="";
   sprintf(s,"file%d",fileid);
   QString savefilename=QString(s);
-  if (depth<2)
+  if (depth<1)
   {
     Parsert* handler=new Parsert();
     QString cmd=QString("wget -O ").append(savefilename).append(QString(" ")).append(file).append(QString(" 2>/dev/null"));
