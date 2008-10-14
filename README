@@ -2,3 +2,6 @@ Spider is a software to allow you to follow links in html pages.
 
 To compile this, use
 cmake . && make -j8 && make install
+
+If you do not want to see debugging output, use
+cmake -DCMAKE_BUILD_TYPE=Release . && make -j8 && make install
