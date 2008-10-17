@@ -26,51 +26,23 @@ build and run it like this:
 
 void parsefile(QString file, int depth)
 {
-  kDebug() << "Entering function";
-  static int fileid=1;
-  static QString hostname=QString();
-  KUrl kurl(file);
-  kDebug() << kurl.host() << endl;
-  if (depth==0)
-  {
-    hostname=kurl.host();
-  }
-  if (kurl.host()==QString()) 
-  {
-    QString oldfile=file;
-    QString oldhost=hostname;
-    file=oldhost.append(oldfile);
-  }
-  kDebug() << "hostname is " << hostname << endl;
-  kDebug() << "file is " << file << endl;
-  kDebug() << endl;
-  fileid++;
-  char s[80]="";
-  sprintf(s,"file%d",fileid);
-  QString savefilename=QString(s);
-  if (depth<1)
-  {
-    Parsert* handler=new Parsert();
-    QString cmd=QString("wget -O ").append(savefilename).append(QString(" ")).append(file).append(QString(" 2>/dev/null"));
-    kDebug() << cmd << endl;
-    // Download if the parameter is no local file.
-    if ( !hostname.isEmpty() ) system(cmd.toAscii());
-    QFile* htmlfile=new QFile(savefilename);
-    kDebug() << "working with " << htmlfile->fileName();
-    QXmlInputSource* source=new QXmlInputSource(htmlfile);
-    QXmlSimpleReader reader;
+  kDebug() << "Entering function; file=" << file;
+  Parsert* handler=new Parsert();
+  QFile* htmlfile=new QFile(file);
+  kDebug() << "working with " << htmlfile->fileName();
+  QXmlInputSource* source=new QXmlInputSource(htmlfile);
+  QXmlSimpleReader reader;
   
-    myqxmlerrorhandler* er=new myqxmlerrorhandler();
-    reader.setContentHandler( handler );
-    reader.setErrorHandler( er );
-    reader.parse( source );
-    for (int i=0; i<handler->hrefcount(); i++) 
-    {
-      kDebug() << "inspecting next trunk";
-      QString descent=handler->href(i);
-      kDebug() << descent << endl;
-      parsefile(descent, depth+1);
-    }
+  myqxmlerrorhandler* er=new myqxmlerrorhandler();
+  reader.setContentHandler( handler );
+  reader.setErrorHandler( er );
+  reader.parse( source );
+  for (int i=0; i<handler->hrefcount(); i++) 
+  {
+    kDebug() << "inspecting next trunk";
+    QString descent=handler->href(i);
+    kDebug() << descent << endl;
+    parsefile(descent, depth+1);
   }
 }
 
