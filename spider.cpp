@@ -4,6 +4,7 @@ spider.cpp
 This program searches an html file for all references and follows them.
 
 (c) 2006-07-02 by Thorsten Staerk
+(c) 2006-2009
 
 build and run it like this:
  cmake . && make -j8 && ./spider
@@ -18,8 +19,8 @@ build and run it like this:
 #include "myqxmlerrorhandler.h"
 #include <kdebug.h>
 #include <kurl.h>
-#include <tidy.h>
-#include <buffio.h>
+#include <tidy/tidy.h>
+#include <tidy/buffio.h>
 #include <stdio.h>
 #include <errno.h>
 #include <iostream>
