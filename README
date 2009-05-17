@@ -1,10 +1,12 @@
 Spider is a software to allow you to follow links in html pages.
 
 You need to have tidy installed. For SUSE 11.1, you can do this with
-yast -i libtidy-devel
+ yast -i libtidy-devel
 
 To compile this, use
-cmake . && make -j8
-
+ cmake . && make -j8
 If you do not want to see debugging output, use
-cmake -DCMAKE_BUILD_TYPE=Release . && make -j8
+ cmake -DCMAKE_BUILD_TYPE=Release . && make -j8
+
+Call spider like this:
+ ./spider example.htm
