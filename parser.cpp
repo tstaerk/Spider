@@ -13,11 +13,6 @@ Parsert::Parsert()
 {
   kDebug() << "A parser is being constructed";
 }
-
-int Parsert::lineNumber()
-{
-  kDebug() << "Entering function";
-}
   
 void Parsert::setDocumentLocator(QXmlLocator* l)
 {
@@ -39,7 +34,6 @@ bool Parsert::startElement( const QString&, const QString&, const QString& qName
   {
     kDebug() << att.value(0) << endl;
     hrefs.append(att.value(0));
-    //printf("%s",att.value(0));
     cout << att.value(0).toStdString() << endl;
   }
   return true;
