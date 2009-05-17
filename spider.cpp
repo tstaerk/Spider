@@ -19,8 +19,8 @@ build and run it like this:
 #include "myqxmlerrorhandler.h"
 #include <kdebug.h>
 #include <kurl.h>
-#include <tidy/tidy.h>
-#include <tidy/buffio.h>
+#include <tidy.h>
+#include <buffio.h>
 #include <stdio.h>
 #include <errno.h>
 #include <iostream>
