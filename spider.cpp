@@ -25,28 +25,6 @@ build and run it like this:
 #include <errno.h>
 #include <iostream>
 
-void parsefile(QString file, int depth)
-{
-  kDebug() << "Entering function; file=" << file;
-  Parsert* handler=new Parsert();
-  QFile* htmlfile=new QFile(file);
-  kDebug() << "working with " << htmlfile->fileName();
-  QXmlInputSource* source=new QXmlInputSource(htmlfile);
-  QXmlSimpleReader reader;
-  
-  myqxmlerrorhandler* er=new myqxmlerrorhandler();
-  reader.setContentHandler( handler );
-  reader.setErrorHandler( er );
-  reader.parse( source );
-  for (int i=0; i<handler->hrefcount(); i++) 
-  {
-    kDebug() << "inspecting next trunk";
-    QString descent=handler->href(i);
-    kDebug() << descent << endl;
-    parsefile(descent, depth+1);
-  }
-}
-
 void parsecontent(QString content, int depth)
 {
   kDebug() << "Entering function";
@@ -64,7 +42,7 @@ void parsecontent(QString content, int depth)
     kDebug() << "inspecting next trunk";
     QString descent=handler->href(i);
     kDebug() << descent << endl;
-    parsefile(descent, depth+1);
+    parsecontent(descent, depth+1);
   }
 }
 
