@@ -8,6 +8,9 @@ This program searches an html file for all references and follows them.
 
 build and run it like this:
  cmake . && make -j8 && ./spider
+ 
+Progress:
+2009-12-13: 2 hours: Tidy html to xhtml first.
 */
 
 
