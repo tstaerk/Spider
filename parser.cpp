@@ -11,44 +11,40 @@ using namespace std;
 
 Parsert::Parsert()
 {
-  kDebug() << "A parser is being constructed";
 }
   
 void Parsert::setDocumentLocator(QXmlLocator* l)
 {
-  kDebug() << "Entering function";
   loc=l;
 }
 
 bool Parsert::startDocument()
 {
-  kDebug() << "Entering function";
   return true;
 }
   
 bool Parsert::startElement( const QString&, const QString&, const QString& qName, const QXmlAttributes& att )
 {
-  kDebug() << "Entering function";
-  kDebug() << "qName is " << qName;
   if (qName=="a") 
   {
+    kDebug() << att.qName(0) << endl;
     kDebug() << att.value(0) << endl;
-    hrefs.append(att.value(0));
-    cout << att.value(0).toStdString() << endl;
+    if (att.qName(0)=="href") 
+    {
+      hrefs.append(att.value(0));
+      cout << att.value(0).toStdString() << endl;
+    }
   }
   return true;
 }
 
-bool Parsert::endElement( const QString&, const QString&, const QString& qName )
+bool Parsert::endElement( const QString&, const QString&, const QString& )
 {
-  kDebug() << "Entering function, qName=" << qName;
-  withInHeading=false;
   return true;
 }
 
-bool Parsert::characters( const QString& ch)
+bool Parsert::characters( const QString& )
 {
-  kDebug() << "Entering function, ch=" << ch;
   return true;
 }
  
@@ -60,6 +56,5 @@ int Parsert::hrefcount() { kDebug() << "Entering function"; return hrefs.size();
 
 QString Parsert::href(int i)
 {
-  kDebug() << "Entering function";
   return hrefs.takeAt(i);
 }

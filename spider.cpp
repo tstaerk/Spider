@@ -11,6 +11,7 @@ build and run it like this:
  
 Progress:
 2009-12-13: 2 hours: Tidy html to xhtml first.
+2010-07-22: 1 hour: react on <a href>, but not on <a name>
 */
 
 

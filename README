@@ -9,4 +9,5 @@ If you do not want to see debugging output, use
  cmake -DCMAKE_BUILD_TYPE=Release . && make -j8
 
 Call spider like this:
- ./spider example.htm
+ ./spider example.htm 2>/dev/null
+With the addition 2>/dev/null, debugging output is removed.

@@ -26,7 +26,6 @@ public:
   bool characters(const QString& ch);
   QString href(int i);
   QXmlLocator* loc;
-  bool withInHeading;
   int bodystartx; // where the html body starts
   int bodystarty; // where the html body starts
   int getbodystarty();
