@@ -4,7 +4,7 @@ spider.cpp
 This program searches an html file for all references and follows them.
 
 (c) 2006-07-02 by Thorsten Staerk
-(c) 2006-2009
+(c) 2006-2010
 
 build and run it like this:
  cmake . && make -j8 && ./spider

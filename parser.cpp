@@ -41,14 +41,14 @@ bool Parsert::startElement( const QString&, const QString&, const QString& qName
 
 bool Parsert::endElement( const QString&, const QString&, const QString& qName )
 {
-  kDebug() << "Entering function";
+  kDebug() << "Entering function, qName=" << qName;
   withInHeading=false;
   return true;
 }
 
 bool Parsert::characters( const QString& ch)
 {
-  kDebug() << "Entering function";
+  kDebug() << "Entering function, ch=" << ch;
   return true;
 }
  
